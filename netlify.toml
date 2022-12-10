@@ -2,4 +2,7 @@
   functions = "functions"
 
 [context.dev.environment]
-  GREETING_TEST = "Hello"
+  GREETING_TEST = "Hello Development"
+
+[context.production.environment]
+  GREETING_TEST = "Hello Production"
