@@ -1,2 +1,5 @@
 [build]
   functions = "functions"
+
+[context.dev.environment]
+  GREETING_TEST = "Hello"
