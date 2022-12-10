@@ -1,14 +1,15 @@
 import logo from './logo.svg';
 import './App.css';
 import React, { useState } from 'react';
-import BasicTest from './api/google';
 
 function App() {
   const [resp, setResp] = useState('');
   
   async function callApi() {
-    const calledData = await BasicTest().catch(console.error);
-    setResp(calledData as string);
+    const url = "/.netlify/functions/hello-netlify";
+    const helloStream = await fetch(url);
+    const helloText = await helloStream.text();
+    setResp(helloText as string);
   }
 
   return (
