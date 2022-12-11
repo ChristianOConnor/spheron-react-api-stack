@@ -1,8 +1,9 @@
 const GoogleAuth = require("google-auth-library").GoogleAuth;
 
 exports.handler = async (event) => {
+  const keyInJsn = JSON.parse(process.env.CREDENTIALS_STR)
   const auth = new GoogleAuth({
-    keyFilename: "<CREDENTIAL PATH>"
+    credentials: keyInJsn
   });
   const url = process.env.RUN_APP_URL;
 
