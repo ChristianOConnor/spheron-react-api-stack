@@ -1,8 +1,2 @@
 [functions]
   directory = "functions/"
-
-[context.dev.environment]
-  GREETING_TEST = "Hello Development"
-
-[context.production.environment]
-  GREETING_TEST = "Hello Production"
