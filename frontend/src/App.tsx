@@ -6,8 +6,13 @@ function App() {
   const [resp, setResp] = useState('');
   
   async function callApi() {
-    const url = "/.netlify/functions/hello-netlify";
-    const helloStream = await fetch(url);
+    const url = "http://localhost:8081/hello";
+    const helloStream = await fetch(url, {
+      method: 'GET',
+      headers: {
+        'Access-Control-Allow-Origin': '*'
+      }
+    });
     const helloText = await helloStream.text();
     setResp(helloText as string);
   }
