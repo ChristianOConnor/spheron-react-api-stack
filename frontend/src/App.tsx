@@ -7,12 +7,7 @@ function App() {
   
   async function callApi() {
     const url = "http://localhost:8081/hello";
-    const helloStream = await fetch(url, {
-      method: 'GET',
-      headers: {
-        'Access-Control-Allow-Origin': '*'
-      }
-    });
+    const helloStream = await fetch(url);
     const helloText = await helloStream.text();
     setResp(helloText as string);
   }

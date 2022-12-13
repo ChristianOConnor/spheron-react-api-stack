@@ -7,10 +7,6 @@ const cors = require("cors");
 app.use(cors());
 
 app.get('/hello', async function (req, res) {
-    res.setHeader('Access-Control-Allow-Origin', '*');
-    res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
-    res.setHeader('Access-Control-Allow-Credentials', true); // you probably dont want this one unless there is auth/cookies involved
-    res.setHeader('Access-Control-Allow-Methods', 'GET,PATCH,POST,PUT,DELETE');
     const keyInJsn = JSON.parse(process.env.CREDENTIALS_STR)
     const auth = new GoogleAuth({
         credentials: keyInJsn
