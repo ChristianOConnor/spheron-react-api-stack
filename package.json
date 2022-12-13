@@ -1,5 +1,5 @@
 {
-  "name": "google-cloudfunction-callfromreactapp",
+  "name": "spheron-react-api-stack",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
