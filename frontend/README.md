@@ -44,16 +44,3 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
 To learn React, check out the [React documentation](https://reactjs.org/).
-
-## Netlify  
-
-To test with Netlify cli, make `netlify.toml` look like this:  
-```
-[functions]
-  directory = "functions/"
-
-[context.dev.environment]
-  CREDENTIALS_STR = '{"type": "service_account","project_id": "<PROJECT ID>","private_key_id": "<PRIVATE KEY ID>","private_key": "-----BEGIN PRIVATE KEY-----\<PRIVATE KEY>\n-----END PRIVATE KEY-----\n","client_email": "<SERVICE ACCOUNT NAME>@<PROJECT NAME>.iam.gserviceaccount.com","client_id": "<CLIENT ID>","auth_uri": "https://accounts.google.com/o/oauth2/auth","token_uri": "https://oauth2.googleapis.com/token","auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs","client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/<SERVICE ACCOUNT NAME>.iam.gserviceaccount.com"}'
-  RUN_APP_URL = "<MY GOOGLE CLOUD FUNCTION TRIGGER URL>"
-```  
-Then run `netlify dev`
