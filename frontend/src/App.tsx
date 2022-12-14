@@ -1,12 +1,12 @@
-import logo from './logo.svg';
-import './App.css';
-import React, { useState } from 'react';
+import logo from "./logo.svg";
+import "./App.css";
+import React, { useState } from "react";
 
 function App() {
-  const [resp, setResp] = useState('');
-  
+  const [resp, setResp] = useState("");
+
   async function callApi() {
-    const url = "http://localhost:8081/hello";
+    const url = `${process.env.REACT_APP_API_URL}/hello`;
     const helloStream = await fetch(url);
     const helloText = await helloStream.text();
     setResp(helloText as string);
@@ -29,12 +29,8 @@ function App() {
         </a>
       </header>
       <div className="card">
-        <button onClick={() => callApi()}>
-          click this to call API
-        </button>
-        <p>
-          {resp}
-        </p>
+        <button onClick={() => callApi()}>click this to call API</button>
+        <p>{resp}</p>
       </div>
     </div>
   );
