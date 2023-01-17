@@ -1,6 +1,7 @@
 import logo from "./logo.svg";
 import "./App.css";
 import React, { useState } from "react";
+import ToggleSwitch from "./ToggleSwitch";
 
 function App() {
   const [resp, setResp] = useState("");
@@ -28,6 +29,9 @@ function App() {
           Learn React
         </a>
       </header>
+      <ToggleSwitch />
+      <br />
+      <br />
       <div className="card">
         <button onClick={() => callApi()}>click this to call API</button>
         <p>{resp}</p>
