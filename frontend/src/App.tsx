@@ -1,16 +1,24 @@
 import logo from "./logo.svg";
 import "./App.css";
-import React, { useState } from "react";
+import { useState } from "react";
+import ToggleSwitch from "./ToggleSwitch";
 
 function App() {
   const [resp, setResp] = useState("");
+  const [isToggled, setIsToggled] = useState(false);
 
   async function callApi() {
     const url = `${process.env.REACT_APP_API_URL}/hello`;
-    const helloStream = await fetch(url);
+    const requestOptions = {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ switchBool: isToggled })
+  };
+    const helloStream = await fetch(url, requestOptions);
     const helloText = await helloStream.text();
     setResp(helloText as string);
   }
+  console.log(isToggled);
 
   return (
     <div className="App">
@@ -28,6 +36,9 @@ function App() {
           Learn React
         </a>
       </header>
+      <ToggleSwitch toggledVal={isToggled} setToggled={setIsToggled} />
+      <br />
+      <br />
       <div className="card">
         <button onClick={() => callApi()}>click this to call API</button>
         <p>{resp}</p>
