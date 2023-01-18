@@ -5,6 +5,7 @@ import ToggleSwitch from "./ToggleSwitch";
 
 function App() {
   const [resp, setResp] = useState("");
+  const [isToggled, setIsToggled] = useState(false);
 
   async function callApi() {
     const url = `${process.env.REACT_APP_API_URL}/hello`;
@@ -12,6 +13,7 @@ function App() {
     const helloText = await helloStream.text();
     setResp(helloText as string);
   }
+  console.log(isToggled);
 
   return (
     <div className="App">
@@ -29,7 +31,7 @@ function App() {
           Learn React
         </a>
       </header>
-      <ToggleSwitch />
+      <ToggleSwitch toggledVal={isToggled} setToggled={setIsToggled} />
       <br />
       <br />
       <div className="card">
