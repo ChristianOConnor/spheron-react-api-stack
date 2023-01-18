@@ -1,6 +1,6 @@
 import logo from "./logo.svg";
 import "./App.css";
-import React, { useState } from "react";
+import { useState } from "react";
 import ToggleSwitch from "./ToggleSwitch";
 
 function App() {
@@ -9,7 +9,12 @@ function App() {
 
   async function callApi() {
     const url = `${process.env.REACT_APP_API_URL}/hello`;
-    const helloStream = await fetch(url);
+    const requestOptions = {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ switchBool: isToggled })
+  };
+    const helloStream = await fetch(url, requestOptions);
     const helloText = await helloStream.text();
     setResp(helloText as string);
   }

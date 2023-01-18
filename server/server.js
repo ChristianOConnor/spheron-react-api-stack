@@ -8,17 +8,22 @@ app.use(
   cors({ origin: process.env.ORIGIN, credentials: process.env.CREDENTIALS })
 );
 
-app.get("/hello", async function (req, res) {
-  const keyInJsn = JSON.parse(process.env.CREDENTIALS_STR);
-  const auth = new GoogleAuth({
-    credentials: keyInJsn,
-  });
-  const url = process.env.RUN_APP_URL;
+app.use(express.json());
 
-  //Create your client with an Identity token.
-  const client = await auth.getIdTokenClient(url);
-  const result = await client.request({ url });
-  const resData = result.data;
+app.post("/hello", async function (req, res) {
+  let passedInToggleValue = false
+  if (req.body === null || req.body === undefined) {
+    console.log("body is empty");
+  }
+  else if (!req.body.hasOwnProperty('switchBool')) {
+    console.log("switchBool is empty");
+  }
+  else if (req.body.switchBool) {
+    passedInToggleValue = true
+  }
+
+  const toggleValue = passedInToggleValue ? "on" : "off";
+  const resData = `this backend is running and the Testing On/Off Switch is ${toggleValue}`;
   res.send(resData);
 });
 
