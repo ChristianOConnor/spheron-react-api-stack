@@ -23,19 +23,14 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
+        <h2>
+          Spheron-React-API-Stack
+        </h2>
         <p>
-          Edit <code>src/App.tsx</code> and save to reload.
+          This is a test of experimental code
         </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
       </header>
+      <img src={logo} className="App-logo" alt="logo" />
       <ToggleSwitch toggledVal={isToggled} setToggled={setIsToggled} />
       <br />
       <br />
