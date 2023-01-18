@@ -1,33 +1,39 @@
 import logo from "./logo.svg";
 import "./App.css";
-import React, { useState } from "react";
+import { useState } from "react";
+import ToggleSwitch from "./ToggleSwitch";
 
 function App() {
   const [resp, setResp] = useState("");
+  const [isToggled, setIsToggled] = useState(false);
 
   async function callApi() {
     const url = `${process.env.REACT_APP_API_URL}/hello`;
-    const helloStream = await fetch(url);
+    const requestOptions = {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ switchBool: isToggled })
+  };
+    const helloStream = await fetch(url, requestOptions);
     const helloText = await helloStream.text();
     setResp(helloText as string);
   }
+  console.log(isToggled);
 
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
+        <h2>
+          Spheron-React-API-Stack
+        </h2>
         <p>
-          Edit <code>src/App.tsx</code> and save to reload.
+          This is a test of experimental code
         </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
       </header>
+      <img src={logo} className="App-logo" alt="logo" />
+      <ToggleSwitch toggledVal={isToggled} setToggled={setIsToggled} />
+      <br />
+      <br />
       <div className="card">
         <button onClick={() => callApi()}>click this to call API</button>
         <p>{resp}</p>
