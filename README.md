@@ -14,3 +14,5 @@
 - `npm install`  
 - `npm start`  
 - (When you're finished testing the app, stop the docker container running the backend, as it will continue to listen on 8081 for API requests)
+
+P.S. I used https://github.com/w3collective/react-toggle-switch for the toggle switch.
