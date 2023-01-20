@@ -12,6 +12,7 @@ function App() {
     let myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
     myHeaders.append("Access-Control-Allow-Origin", "*");
+    myHeaders.append("Access-Control-Allow-Headers", "*");
     const requestOptions = {
       method: 'POST',
       headers: myHeaders,
