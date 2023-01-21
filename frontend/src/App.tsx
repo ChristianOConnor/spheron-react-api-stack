@@ -9,13 +9,9 @@ function App() {
 
   async function callApi() {
     const url = `${process.env.REACT_APP_API_URL}/hello`;
-    let myHeaders = new Headers();
-    myHeaders.append("Content-Type", "application/json");
-    myHeaders.append("Access-Control-Allow-Origin", "*");
-    myHeaders.append("Access-Control-Allow-Headers", "*");
     const requestOptions = {
       method: 'POST',
-      headers: myHeaders,
+      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ switchBool: isToggled })
   };
     const helloStream = await fetch(url, requestOptions);
